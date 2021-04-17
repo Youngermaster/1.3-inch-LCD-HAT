@@ -108,3 +108,40 @@ sudo nano /etc/rc.local
 
 And then add `fbcp&` before `exit 0`.
 
+### Set the display resolution
+
+Set the user interface display size in the /boot/config.txt file.
+
+```
+sudo nano /boot/config.txt
+```
+
+Then add the following lines at the end of the config.txt.
+
+```
+hdmi_force_hotplug=1
+hdmi_cvt=300 300 60 1 0 0 0
+hdmi_group=2
+hdmi_mode=1
+hdmi_mode=87
+display_rotate=0
+```
+
+**Note:** If you are using Raspberry Pi 4B, you need to comment out the following lines on the [pi4] part. The modification is as below:
+
+```
+[pi4]
+# Enable DRM VC4 V3D driver on top of the dispmanx display stack
+#dtoverlay=vc4-fkms-v3d
+#max_framebuffers=2
+```
+
+And then reboot the system
+
+```
+sudo reboot
+```
+
+The final display effect is scaled and displayed on the 1.3inch LCD in proportion. The setting of the resolution here should be slightly larger than the LCD resolution, the too high resolution will cause the font display to be blurred.
+
+After rebooting the system, the Raspberry Pi OS user interface will be displayed.
