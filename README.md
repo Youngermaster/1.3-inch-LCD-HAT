@@ -21,7 +21,7 @@ This repo is using the [WaveShare tutorial](https://www.waveshare.com/wiki/1.3in
 
 Please make sure that SPI interface was not used by other devices, you can check in the `/boot/config.txt`.
 
-### Install Libraries
+### �� Install Libraries
 
 - Install BCM2835 libraries
 
@@ -44,7 +44,7 @@ For more details, please refer to http://www.airspayce.com/mikem/bcm2835/.
     sudo pip install spidev
     ```
 
-### Use the Examples
+### �� Use the Examples
 
 Open Raspberry Pi terminal, go to where is located the repository folder and run the following commands:
 
@@ -80,3 +80,9 @@ And then add the following line at the end of the config.txt
     sudo python main.py
     sudo python key_demo.py
 ```
+
+## FBCP Transplant
+
+The Framebuffer uses a memory area to store the display content, and changes the data in the memory to change the display content.
+
+There is an open-source project on github: `fbcp-ili9341`. Compared with other fbcp projects, this project uses partial refresh and DMA to achieve a refresh rate of up to 60fps
