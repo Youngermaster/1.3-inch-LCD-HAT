@@ -21,7 +21,7 @@ This repo is using the [WaveShare tutorial](https://www.waveshare.com/wiki/1.3in
 
 Please make sure that SPI interface was not used by other devices, you can check in the `/boot/config.txt`.
 
-### �� Install Libraries
+## Install Libraries
 
 - Install BCM2835 libraries
 
@@ -44,7 +44,7 @@ For more details, please refer to http://www.airspayce.com/mikem/bcm2835/.
     sudo pip install spidev
     ```
 
-### �� Use the Examples
+### Use the Examples
 
 Open Raspberry Pi terminal, go to where is located the repository folder and run the following commands:
 
@@ -85,4 +85,26 @@ And then add the following line at the end of the config.txt
 
 The Framebuffer uses a memory area to store the display content, and changes the data in the memory to change the display content.
 
-There is an open-source project on github: `fbcp-ili9341`. Compared with other fbcp projects, this project uses partial refresh and DMA to achieve a refresh rate of up to 60fps
+There is an open-source project on github: `fbcp-ili9341`. Compared with other fbcp projects, this project uses partial refresh and DMA to achieve a refresh rate of up to 60fps.
+
+### Compile and Run
+
+Go inside where is located the repository and use these commands:
+
+```    
+    sudo apt-get install cmake -y
+    cd FBCPTransplant/Fbcp-ili9341
+    cmake -S . -B build/ -DSPI_BUS_CLOCK_DIVISOR=20 -DWAVESHARE_ST7789VW_HAT=ON -DDMA_TX_CHANNEL=5 -DDMA_RX_CHANNEL=6 -DBACKLIGHT_CONTROL=ON -DSTATISTICS=0
+    make -j
+    sudo ./fbcp-ili9341
+```
+
+### Auto-start when Power on
+
+```
+sudo cp ~/Fbcp-ili9341/build/fbcp-ili9341 /usr/local/bin/fbcp
+sudo nano /etc/rc.local
+```
+
+And then add `fbcp&` before `exit 0`.
+
