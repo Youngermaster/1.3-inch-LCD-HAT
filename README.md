@@ -122,7 +122,7 @@ Go inside where is located the repository and use these commands:
 ### Auto-start when Power on
 
 ```
-sudo cp ~/Fbcp-ili9341/build/fbcp-ili9341 /usr/local/bin/fbcp
+sudo cp FBCPTransplant/Fbcp-ili9341/build/fbcp-ili9341 /usr/local/bin/fbcp
 sudo nano /etc/rc.local
 ```
 
