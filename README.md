@@ -6,6 +6,25 @@ This is an IPS LCD display HAT drivers and instructions for Raspberry Pi, 1.3inc
 This repo is using the [WaveShare tutorial](https://www.waveshare.com/wiki/1.3inch_LCD_HAT).
 
 
+## Tested devices
+
+### Raspberry Pi 4
+
+It works perfectly fine on the raspberry pi 4 model B.
+
+![test_0](GitHubAssets/RPI_4_works_0.JPG)
+![test_1](GitHubAssets/RPI_4_works_1.JPG)
+
+by the way sorry for the low quality of the last picture.
+
+### ⚠ Raspberry Pi Zero W
+
+**It's not working yet** on the raspberry pi Zero W.
+
+![test_0](GitHubAssets/RPI_0_w_0.JPG)
+![test_1](GitHubAssets/RPI_0_w_1.JPG)
+
+
 ## ⚙ How to build it?
 
 
@@ -37,9 +56,9 @@ For more details, please refer to http://www.airspayce.com/mikem/bcm2835/.
 - Install Python libraries
 
     ``` 
-    sudo apt-get update
-    sudo apt-get install ttf-wqy-zenhei
-    sudo apt-get install python-pip 
+    sudo apt-get update -y
+    sudo apt-get install ttf-wqy-zenhei -y
+    sudo apt-get install python-pip -y
     sudo pip install RPi.GPIO
     sudo pip install spidev
     ```
@@ -94,7 +113,8 @@ Go inside where is located the repository and use these commands:
 ```    
     sudo apt-get install cmake -y
     cd FBCPTransplant/Fbcp-ili9341
-    cmake -S . -B build/ -DSPI_BUS_CLOCK_DIVISOR=20 -DWAVESHARE_ST7789VW_HAT=ON -DDMA_TX_CHANNEL=5 -DDMA_RX_CHANNEL=6 -DBACKLIGHT_CONTROL=ON -DSTATISTICS=0
+    cmake -S . -B build/ -DSPI_BUS_CLOCK_DIVISOR=20 -DWAVESHARE_ST7789VW_HAT=ON -DDMA_TX_CHANNEL=10 -DDMA_RX_CHANNEL=1 -DBACKLIGHT_CONTROL=ON -DSTATISTICS=0
+    cd build
     make -j
     sudo ./fbcp-ili9341
 ```
